@@ -19,6 +19,7 @@ urlpatterns = [
     path('polus/', include(([
         # path('', teachers.QuizListView.as_view(), name='quiz_change_list'),
     path('', polus.home, name='home'),
+    path('createrule/', polus.RuleCreate.as_view(), name='rule_create'),
 
     ], 'user_control'), namespace='polus')),
 ]

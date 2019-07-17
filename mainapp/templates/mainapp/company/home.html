@@ -6,9 +6,9 @@
             <div class="animated fadeIn">
                 <!-- Widgets  -->
                 <div class="row">
-  <h2>Welcome to the Django Schools! <span class="icon-emo-happy"></span></h2>
+  <h2>Welcome to the Django Schools!<br>{{ user.get_user_type_display }} <span class="icon-emo-happy"></span></h2>
   <p class="lead">
-   {{ request.user_type }}
+
   </p>
   <hr>
 </div>

@@ -5,7 +5,7 @@ from django.utils.html import escape, mark_safe
 class User(AbstractUser):
   USER_TYPE_CHOICES = (
       (1, 'polus'),
-      (2, 'compony'),
+      (2, 'company'),
       (3, 'department'),
 
   )
@@ -70,12 +70,12 @@ class Resume(models.Model):
 
 
 
-# class Department(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-#     rules = models.ManyToManyField(Rule, through='TakenRule')
-#     resumes = models.ManyToManyField(Resume, related_name='resumes')
-#
-#     def __str__(self):
-#         return self.user.username
+class Department(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    # rules = models.ManyToManyField(Rule, through='TakenRule')
+    rules = models.ManyToManyField(Rule, related_name='resumes_rules')
+
+    def __str__(self):
+        return self.user.username
 
 

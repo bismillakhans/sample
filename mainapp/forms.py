@@ -30,7 +30,7 @@ class PolusSignUpForm(UserCreationForm):
 
 
 class DepartmentSignUpForm(UserCreationForm):
-    interests = forms.ModelMultipleChoiceField(
+    rules = forms.ModelMultipleChoiceField(
         queryset=Rule.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         required=True
@@ -47,3 +47,10 @@ class DepartmentSignUpForm(UserCreationForm):
         department = Rule.objects.create(user=user)
         department.rules.add(*self.cleaned_data.get('rules'))
         return user
+
+
+
+class RuleModelForm(forms.ModelForm):
+    class Meta:
+        model = Rule
+        fields = ['name','color']

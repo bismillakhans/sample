@@ -1,9 +1,11 @@
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
-
+from ..forms import RuleModelForm
 
 class SignUpView(TemplateView):
     template_name = 'registration/signup.html'
+
+
 
 
 def home(request):
@@ -14,4 +16,5 @@ def home(request):
             return redirect('department:home')
         else :
             return redirect('polus:home')
+
     return render(request, 'mainapp/home.html')

@@ -8,7 +8,7 @@
             <div class="animated fadeIn">
                 <!-- Widgets  -->
            
-      <h2>Create account for {{ user_type }}</h2>
+      <h2>Create Rule {{ user_type }}</h2>
       <form method="post" novalidate>
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}">

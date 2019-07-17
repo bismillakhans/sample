@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import login
 from django.shortcuts import redirect,render
 from django.views.generic import CreateView
@@ -17,8 +18,9 @@ class CompanySignUpView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
+        messages.success(self.request, 'The company created successfully')
         login(self.request, user)
-        return redirect('companies:home_page')
+        return redirect('companies:home')
 
 
 def home(request):

@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import login
 from django.shortcuts import redirect,render
 from django.views.generic import CreateView
@@ -16,8 +17,8 @@ class DepartmentSignUpView(CreateView):
         return super().get_context_data(**kwargs)
 
     def form_valid(self, form):
-        user = form.save()
-        login(self.request, user)
+        form.save()
+        messages.success(self.request, 'The Department created successfully')
         return redirect('departments:home')
 
 def home(request):
