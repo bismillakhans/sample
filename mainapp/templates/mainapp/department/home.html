@@ -1,18 +1,30 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+
+
 <div class="content">
+
+
             <!-- Animated -->
             <div class="animated fadeIn">
                 <!-- Widgets  -->
                 <div class="row">
-  <h2>Welcome to the Django Schools! <span class="icon-emo-happy"></span></h2>
-  <p class="lead">
-{{ request.user_type }}
+                    <p class="text-muted">
+  Rules:{% for rule in user.department.rules.all %} {{ rule.get_html_badge }}{% endfor %}
+    </p>
+                    <a href="{% url 'department:update_rules' %}"><i class="menu-icon fa fa-reply-all"></i>Update</a>
+                </div>
+                <div class="row">
+                    <h2>Welcome to the Django ! <br>{{ user.get_user_type_display }}<span class="icon-emo-happy"></span></h2>
+                <p class="lead">
+{{ request.user_type }} </div>
+
+
 
   </p>
   <hr>
-</div>
 </div>
 </div>
 

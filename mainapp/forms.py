@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.forms.utils import ValidationError
 
-from .models import ( User, Rule)
+from .models import (User, Rule, Department)
 
 
 class CompanySignUpForm(UserCreationForm):
@@ -44,7 +44,7 @@ class DepartmentSignUpForm(UserCreationForm):
         user = super().save(commit=False)
         user.user_type = 3
         user.save()
-        department = Rule.objects.create(user=user)
+        department = Department.objects.create(user=user)
         department.rules.add(*self.cleaned_data.get('rules'))
         return user
 
@@ -54,3 +54,14 @@ class RuleModelForm(forms.ModelForm):
     class Meta:
         model = Rule
         fields = ['name','color']
+
+
+
+
+class DepartmentRuleForm(forms.ModelForm):
+    class Meta:
+        model = Department
+        fields = ('rules', )
+        widgets = {
+            'rules': forms.CheckboxSelectMultiple
+        }

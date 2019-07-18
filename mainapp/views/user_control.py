@@ -11,7 +11,7 @@ class SignUpView(TemplateView):
 def home(request):
     if request.user.is_authenticated:
         if request.user.user_type ==2:
-            return redirect('companies:home')
+            return redirect('company:home')
         elif request.user.user_type ==3:
             return redirect('department:home')
         else :

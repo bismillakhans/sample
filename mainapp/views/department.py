@@ -1,10 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth import login
 from django.shortcuts import redirect,render
-from django.views.generic import CreateView
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, UpdateView
 
-from ..forms import DepartmentSignUpForm
-from ..models import  User
+from ..forms import DepartmentSignUpForm, DepartmentRuleForm
+from ..models import User, Department
 
 
 class DepartmentSignUpView(CreateView):
@@ -19,7 +20,23 @@ class DepartmentSignUpView(CreateView):
     def form_valid(self, form):
         form.save()
         messages.success(self.request, 'The Department created successfully')
-        return redirect('departments:home')
+        return redirect('department:home')
 
-def home(request):
+def uploadForm(request):
     return render(request,'mainapp/department/home.html')
+
+def documentList(request):
+    return render(request,'mainapp/department/document_list.html')
+
+class DepartmentRuleView(UpdateView):
+    model = Department
+    form_class = DepartmentRuleForm
+    template_name = 'mainapp/department/update_rule.html'
+    success_url = reverse_lazy('department:home')
+
+    def get_object(self):
+        return self.request.user.department
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Rules updated with success!')
+        return super().form_valid(form)

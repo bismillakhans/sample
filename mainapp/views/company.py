@@ -20,7 +20,7 @@ class CompanySignUpView(CreateView):
         user = form.save()
         messages.success(self.request, 'The company created successfully')
         login(self.request, user)
-        return redirect('companies:home')
+        return redirect('company:home')
 
 
 def home(request):

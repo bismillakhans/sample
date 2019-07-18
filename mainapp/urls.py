@@ -9,12 +9,14 @@ urlpatterns = [
     # path('', teachers.QuizListView.as_view(), name='quiz_change_list'),
     path('', company.home, name='home'),
 
-                              ], 'user_control'), namespace='companies')),
+                              ], 'user_control'), namespace='company')),
 
     path('department/', include(([
         # path('', teachers.QuizListView.as_view(), name='quiz_change_list'),
-     path('', department.home, name='home'),
-                                 ], 'user_control'), namespace='departments')),
+     path('uploadForm/', department.uploadForm, name='uploadForm'),
+     path('', department.documentList, name='document_list'),
+    path('interests/', department.DepartmentRuleView.as_view(), name='update_rules'),
+                                 ], 'user_control'), namespace='department')),
 
     path('polus/', include(([
         # path('', teachers.QuizListView.as_view(), name='quiz_change_list'),
