@@ -1,12 +1,15 @@
 from django.contrib import messages
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect,render
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView
 
+from ..decorators import polus_required, company_required
 from ..forms import CompanySignUpForm
 from ..models import  User
 
-
+@method_decorator([login_required, polus_required], name='dispatch')
 class CompanySignUpView(CreateView):
     model = User
     form_class = CompanySignUpForm
@@ -20,8 +23,9 @@ class CompanySignUpView(CreateView):
         user = form.save()
         messages.success(self.request, 'The company created successfully')
         login(self.request, user)
-        return redirect('company:home')
+        return redirect('company:homePage')
 
-
-def home(request):
+@login_required
+@company_required
+def homePage(request):
     return render(request,'mainapp/company/home.html')

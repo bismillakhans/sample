@@ -1,5 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 from django.utils.html import escape, mark_safe
 # Create your models here.
 class User(AbstractUser):
@@ -79,3 +81,9 @@ class Department(models.Model):
         return self.user.username
 
 
+
+
+# delete the resume files associated with each object or record
+@receiver(post_delete, sender=Resume)
+def submission_delete(sender, instance, **kwargs):
+    instance.resume.delete(False)

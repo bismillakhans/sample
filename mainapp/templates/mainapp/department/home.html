@@ -17,14 +17,13 @@
                     <a href="{% url 'department:update_rules' %}"><i class="menu-icon fa fa-reply-all"></i>Update</a>
                 </div>
                 <div class="row">
-                    <h2>Welcome to the Django ! <br>{{ user.get_user_type_display }}<span class="icon-emo-happy"></span></h2>
-                <p class="lead">
-{{ request.user_type }} </div>
-
-
-
-  </p>
+                   <form method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn  btn-success" type="submit">Upload</button>
+  </form>
   <hr>
+</div>
 </div>
 </div>
 

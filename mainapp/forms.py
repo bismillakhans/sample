@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
+from django.forms import ClearableFileInput
 from django.forms.utils import ValidationError
 
-from .models import (User, Rule, Department)
+from .models import (User, Rule, Department, Resume)
 
 
 class CompanySignUpForm(UserCreationForm):
@@ -64,4 +65,13 @@ class DepartmentRuleForm(forms.ModelForm):
         fields = ('rules', )
         widgets = {
             'rules': forms.CheckboxSelectMultiple
+        }
+
+
+class UploadResumeModelForm(forms.ModelForm):
+    class Meta:
+        model = Resume
+        fields = ['resume']
+        widgets = {
+            'resume': ClearableFileInput(attrs={'multiple': True}),
         }

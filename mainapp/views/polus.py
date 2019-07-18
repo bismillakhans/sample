@@ -2,11 +2,12 @@ from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect,render
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView
 
 from ..forms import PolusSignUpForm,RuleModelForm
 from ..models import  User,Rule
-
+from ..decorators import polus_required
 
 class PolusSignUpView(CreateView):
     model = User
@@ -21,13 +22,15 @@ class PolusSignUpView(CreateView):
         user = form.save()
         messages.success(self.request, 'The Polus created successfully')
         login(self.request, user)
-        return redirect('polus:home')
+        return redirect('polus:homePage')
 
-
-def home(request):
+@login_required
+@polus_required
+def homePage(request):
     return render(request,'mainapp/polus/home.html')
 
 
+@method_decorator([login_required, polus_required], name='dispatch')
 class RuleCreate(CreateView):
     model = Rule
     form_class = RuleModelForm
@@ -36,4 +39,4 @@ class RuleCreate(CreateView):
     def form_valid(self, form):
         form.save()
         messages.success(self.request, 'The Rule created successfully')
-        return redirect('polus:home')
+        return redirect('polus:homePage')
