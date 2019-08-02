@@ -17,6 +17,7 @@ class User(AbstractUser):
 
 
 class Rule(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=30)
     color = models.CharField(max_length=7, default='#007bff')
 

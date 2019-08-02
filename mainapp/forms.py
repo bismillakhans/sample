@@ -32,7 +32,7 @@ class PolusSignUpForm(UserCreationForm):
 
 class DepartmentSignUpForm(UserCreationForm):
     rules = forms.ModelMultipleChoiceField(
-        queryset=Rule.objects.all(),
+        queryset=Rule.objects.filter(id=2),
         widget=forms.CheckboxSelectMultiple,
         required=True
     )

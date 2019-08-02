@@ -7,6 +7,7 @@ urlpatterns = [
     path('company/', include(([
 
     path('', company.homePage, name='homePage'),
+    path('createrule/', company.RuleCreate.as_view(), name='rule_create'),
 
                               ], 'user_control'), namespace='company')),
 
@@ -18,7 +19,7 @@ urlpatterns = [
 
     path('polus/', include(([
     path('', polus.homePage, name='homePage'),
-    path('createrule/', polus.RuleCreate.as_view(), name='rule_create'),
+    path('polusSignup/', polus.PolusSignUpView.as_view(), name='polus_signup'),
 
     ], 'user_control'), namespace='polus')),
 ]

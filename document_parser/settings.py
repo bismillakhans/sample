@@ -158,25 +158,25 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-TRAIN_URL = os.path.join(BASE_DIR, 'train.csv')
-TENSOR_URL = os.path.join(BASE_DIR, 'frozen_inference_graph.pb')
-LABEL_URL = os.path.join(BASE_DIR, 'labelmap.pbtxt')
-
-
-PD_MODEL_URL = os.path.join(BASE_DIR, 'PD_150')
-
-PD_MODEL_PATH = Path(PD_MODEL_URL)
-
-
-EXP_MODEL_URL = os.path.join(BASE_DIR, 'EXP_60')
-
-EXP_MODEL_PATH = Path(EXP_MODEL_URL)
-
-
-PROJ_MODEL_URL = os.path.join(BASE_DIR, 'PROJ_150')
-
-PROJ_MODEL_PATH = Path(PROJ_MODEL_URL)
-
-TECH_MODEL_URL = os.path.join(BASE_DIR, 'TECH_50')
-
-TECH_MODEL_PATH = Path(TECH_MODEL_URL)
+# TRAIN_URL = os.path.join(BASE_DIR, 'train.csv')
+# TENSOR_URL = os.path.join(BASE_DIR, 'frozen_inference_graph.pb')
+# LABEL_URL = os.path.join(BASE_DIR, 'labelmap.pbtxt')
+#
+#
+# PD_MODEL_URL = os.path.join(BASE_DIR, 'PD_150')
+#
+# PD_MODEL_PATH = Path(PD_MODEL_URL)
+#
+#
+# EXP_MODEL_URL = os.path.join(BASE_DIR, 'EXP_60')
+#
+# EXP_MODEL_PATH = Path(EXP_MODEL_URL)
+#
+#
+# PROJ_MODEL_URL = os.path.join(BASE_DIR, 'PROJ_150')
+#
+# PROJ_MODEL_PATH = Path(PROJ_MODEL_URL)
+#
+# TECH_MODEL_URL = os.path.join(BASE_DIR, 'TECH_50')
+#
+# TECH_MODEL_PATH = Path(TECH_MODEL_URL)
